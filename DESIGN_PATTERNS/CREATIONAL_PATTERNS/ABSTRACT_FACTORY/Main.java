@@ -1,7 +1,7 @@
 package DESIGN_PATTERNS.CREATIONAL_PATTERNS.ABSTRACT_FACTORY;
 
-import DESIGN_PATTERNS.FACTORY.Vehicle;
-import DESIGN_PATTERNS.FACTORY.VehicleType;
+import DESIGN_PATTERNS.CREATIONAL_PATTERNS.FACTORY.Vehicle;
+import DESIGN_PATTERNS.CREATIONAL_PATTERNS.FACTORY.VehicleType;
 
 public class Main {
     public static void main(String[] args) {
