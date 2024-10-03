@@ -1,0 +1,7 @@
+package DESIGN_PATTERNS.STRUCTURAL_PATTERNS.DECORATOR.TOPPINGS;
+
+import DESIGN_PATTERNS.STRUCTURAL_PATTERNS.DECORATOR.PIZZA.BasePizza;
+
+public abstract class ToppingDecorator extends BasePizza {
+
+}
