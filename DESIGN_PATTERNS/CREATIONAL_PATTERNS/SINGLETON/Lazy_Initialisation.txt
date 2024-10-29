@@ -1,6 +1,6 @@
 package DESIGN_PATTERNS.CREATIONAL_PATTERNS.SINGLETON;
 
-class DBConnection {
+ class DBConnection {
     private static DBConnection connectionObject;
 
     private DBConnection() {
@@ -11,7 +11,7 @@ class DBConnection {
         if (connectionObject == null) {
             connectionObject = new DBConnection();
         }
-        
+
         return connectionObject;
     }
 }
