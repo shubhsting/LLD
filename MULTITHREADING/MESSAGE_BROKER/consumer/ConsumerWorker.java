@@ -1,15 +1,15 @@
-package MULTITHREADING.SQS.consumer;
+package MULTITHREADING.MESSAGE_BROKER.consumer;
 
-import MULTITHREADING.SQS.CalculationMessage;
+import MULTITHREADING.MESSAGE_BROKER.CalculationMessage;
 
-import java.util.Queue;
-
+import java.util.List;
 
 public class ConsumerWorker implements Runnable {
+    final List<CalculationMessage> queue;
     final IConsumer consumer;
-    final Queue<CalculationMessage> queue;
 
-    public ConsumerWorker(final Queue<CalculationMessage> queue, final IConsumer consumer) {
+    public ConsumerWorker(final List<CalculationMessage> queue,
+                          final IConsumer consumer) {
         this.consumer = consumer;
         this.queue = queue;
     }
@@ -26,7 +26,7 @@ public class ConsumerWorker implements Runnable {
                         throw new RuntimeException(e);
                     }
                 }
-                message = queue.remove();
+                message = queue.remove(0);
             }
             try {
                 consumer.consume(message);
@@ -36,3 +36,4 @@ public class ConsumerWorker implements Runnable {
         }
     }
 }
+
