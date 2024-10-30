@@ -1,6 +1,7 @@
 package MULTITHREADING.SQS.consumer;
 
 import MULTITHREADING.SQS.CalculationMessage;
+import lombok.SneakyThrows;
 
 import java.util.Queue;
 
@@ -14,25 +15,18 @@ public class ConsumerWorker implements Runnable {
         this.queue = queue;
     }
 
+    @SneakyThrows
     @Override
     public void run() {
         while (true) {
             CalculationMessage message;
             synchronized (queue) {
                 while (queue.isEmpty()) {
-                    try {
-                        queue.wait();
-                    } catch (InterruptedException e) {
-                        throw new RuntimeException(e);
-                    }
+                    queue.wait();
                 }
                 message = queue.remove();
             }
-            try {
-                consumer.consume(message);
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
-            }
+            consumer.consume(message);
         }
     }
 }
